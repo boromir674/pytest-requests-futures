@@ -16,10 +16,11 @@ def future_mock():
     Args:
         status_code (int): the http status code that the client desires the mock
             to return
-    
+
     Returns:
         FutureMock: an instance of a Futere Mock
     """
+
     class FutureMock:
         def __init__(self, status_code: int):
             self.result = lambda: type('HttpResponseMock', (), {'status_code': status_code})
@@ -34,6 +35,7 @@ def future_session_mock(future_mock):
     Create a mock object that partially emulates the behaviour of a
     MockFuturesSession instance and "exposes" a mocked 'get' method.
     """
+
     class FutureSessionMock:
         def __init__(self, url_2_code):
             self.url_2_code = url_2_code
@@ -54,6 +56,7 @@ def future_session_mock_from_boolean(future_session_mock):
         found (bool): whether to emulate the mock returning 200 or not as an
             http "status code"
     """
+
     def get_future_check_adapter(found: bool):
         class FixedUrl2CodeWith404NotFound:
             def __init__(self, found: bool):
