@@ -82,9 +82,24 @@ jobs:
       if: ${{ matrix.platform == 'macos-latest' && matrix.python-version != '3.6' }}
       run: brew install enchant
 
+    - name: create setup.py contents
+      run: |
+        SETUP_PY=$(cat << EOF
+        from setuptools import setup
+        setup()
+        EOF
+        )
+        echo "SETUP_PY<<EOF" >> $GITHUB_ENV
+        echo "$SETUP_PY" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
+      id: create_setup_py
+
     - name: Run Documentation Tests
       if: ${{ matrix.platform == 'ubuntu-latest' || matrix.python-version  != '3.6' }}
-      run: tox -e docs --sitepackages -vv -s false
+      run: |
+        echo "The string is: ${{ env.SETUP_PY }}"
+        echo "${{ env.SETUP_PY }}" >> setup.py
+        tox -e docs --sitepackages -vv -s false
 
     - name: Upload Source & Wheel distributions as Artefacts
       uses: actions/upload-artifact@v2

@@ -1,5 +1,5 @@
-__version__ = '0.0.1'
+__version__ = '0.9.0'
 
-from .fixtures import my_fixture
+from .fixtures import future_mock, future_session_mock, future_session_mock_from_boolean
 
-__all__ = ['my_fixture']
+__all__ = ['future_session_mock_from_boolean', 'future_session_mock', 'future_mock']
