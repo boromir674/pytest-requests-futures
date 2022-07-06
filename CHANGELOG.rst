@@ -2,6 +2,20 @@
 Changelog
 =========
 
+0.9.0 (2022-07-06)
+==================
+
+The first release that includes the **future_session_mock_from_boolean**
+`pytest` fixture, packaged as a `pytest plugin`!
+
+Changes
+^^^^^^^
+
+feature
+"""""""
+- create the 'future_session_mock_from_boolean' mock factory
+
+
 0.0.1 (2022-07-06)
 =======================================
 
