@@ -3,9 +3,9 @@ def test_fixture(testdir):
         """
     import pytest
 
-    def test_fixture(my_fixture):
+    def test_fixture(future_session_mock_from_boolean):
 
-        assert my_fixture == 'Implement Me!'
+        assert future_session_mock_from_boolean is not None
     """
     )
     result = testdir.runpytest("--verbose")
